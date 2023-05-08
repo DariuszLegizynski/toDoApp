@@ -1,10 +1,11 @@
-import './App.css'
+import ListHeader from "./components/ListHeader"
+import "./App.css"
 
 function App() {
 
   return (
-    <div>
-      App
+    <div className="app">
+      <ListHeader listName={'Holiday tick list'} />
     </div>
   )
 }
