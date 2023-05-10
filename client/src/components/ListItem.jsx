@@ -26,7 +26,7 @@ const ListItem = ({ task, getData }) => {
       <section className="info-container">
         <TickIcon />
         <p className="task-title">{task.title}</p>
-        <ProgressBar />
+        <ProgressBar progress={task.progress} />
       </section>
 
       <section className='button-container'>
