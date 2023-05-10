@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 
+import Auth from "./components/Auth"
 import ListHeader from "./components/ListHeader"
 import ListItem from "./components/ListItem"
 import "./App.css"
@@ -7,6 +8,8 @@ import "./App.css"
 const App = () => {
   const userEmail = 'd.legizynski@gmail.com'
   const [ tasks, setTasks ] = useState([])
+
+  const authToken = false
 
   const getData = async () => {
     try {
@@ -18,7 +21,11 @@ const App = () => {
     }
   }
 
-  useEffect(() => getData, [])
+  useEffect(() => {
+    if(authToken) {
+      getData, []
+    }
+  })
 
   console.log(tasks)
 
@@ -26,8 +33,11 @@ const App = () => {
 
   return (
     <div className="app">
-      <ListHeader listName={'Holiday tick list'} getData={getData} />
-      {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
+      {!authToken && <Auth />}
+      {authToken && <>
+        <ListHeader listName={'Holiday tick list'} getData={getData} />
+        {sortedTasks?.map((task) => <ListItem key={task.id} task={task} getData={getData} />)}
+      </>}
     </div>
   )
 }
