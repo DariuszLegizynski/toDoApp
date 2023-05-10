@@ -48,7 +48,7 @@ app.post("/todos", async (req, res) => {
 })
 
 // edit a todo
-app.put("todos/:id", async (req, res) => {
+app.put("/todos/:id", async (req, res) => {
 	const { id } = req.params
 	const { user_email, title, progress, date } = req.body
 
@@ -68,7 +68,7 @@ app.put("todos/:id", async (req, res) => {
 
 //delete a todo
 
-app.delete("todos/:id", async (req, res) => {
+app.delete("/todos/:id", async (req, res) => {
   const { id } = req.params
 
   try {
